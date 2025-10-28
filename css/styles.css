@@ -4,7 +4,7 @@ html, body {
   margin: 0;
 }
 body {
-  font-family: "Cormorant Garamond", serif;
+  font-family: 'Poppins', serif;
   font-size: 16px;
   color: #333;
   background-color: #dbeeee;
@@ -104,6 +104,39 @@ header nav ul li a:hover {
 .hero-content p {
   font-size: 1.2rem;
 }
+.carrito-icono { cursor: pointer; }
+.contador {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  font-size: 0.75rem;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  line-height: 18px;
+}
+.panel-carrito {
+  position: fixed;
+  top: 0; right: -400px;
+  width: 340px; height: 100%;
+  background-color: #fff;
+  transition: right 0.4s ease;
+  z-index: 1050;
+  display: flex; flex-direction: column;
+}
+.panel-carrito.activo { right: 0; }
+.panel-header {
+  background-color: #f8f9fa;
+  padding: 1rem; border-bottom: 1px solid #ddd;
+}
+.producto-item {
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid #eee; padding: 8px 0;
+}
+.btn-agregar {
+  background-color: #d4a373; color: white; border: none;
+}
+.btn-agregar:hover { background-color: #bc8a5f; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {

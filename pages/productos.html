@@ -47,14 +47,21 @@
       <img src="../assets/img/logo_bonicha.png" alt="Espacio creativo de Casa Bonicha con muebles reciclados" height="60">
     </a>
     </div>
+    
     <!-- Botón menú -->
     <button class="btn menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuBonicha" aria-controls="menuBonicha">
       <i class="bi bi-list"></i>
     </button>
   </div>
+  <!-- Carrito -->
+  <div class="carrito-icono ms-3 position-relative" id="abrir-carrito">
+        <i class="bi bi-cart3 fs-4"></i>
+        <span id="contador-carrito" class="contador bg-danger text-white rounded-circle">0</span>
+      </div>
 </header>
 
 <!-- Menú lateral -->
+  
 <div class="offcanvas offcanvas-end" tabindex="-1" id="menuBonicha" aria-labelledby="menuBonichaLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="menuBonichaLabel">Menú</h5>
@@ -76,51 +83,37 @@
       </li>
     </ul>
   </div>
+ 
 </div>
+
   <main>
     <section class="productos">
-
       <!-- Sección Hogar -->
       <h2>Hogar</h2>
       <div class="grid-productos">
         <div class="producto-card">
         <img src="../assets/img/hogar/hogar1.png" alt="Producto hogar">
         <h3>Almohadones</h3>
-        <p><strong>Precio</strong></p>
-        <p>Elegí la terminación:</p>
-          <div class="terminaciones">
-            <label><input type="radio" name="terminacion-hogar1"> 1</label>
-            <label><input type="radio" name="terminacion-hogar1"> 2</label>
-            <label><input type="radio" name="terminacion-hogar1"> 3</label>
-        </div>
+        <p><strong>6500</strong></p>
+        
         <p class="descripcion">Tela de algodón con diseño estampado en tonos naturales.</p>
-        <button>Descubrir</button>
+        <button>Agregar al carrito</button>
       </div>
         <div class="producto-card">
         <img src="../assets/img/hogar/hogar2.png" alt="Producto hogar">
         <h3>Mantas Playa</h3>
-        <p><strong>Precio</strong></p>
-        <p>Elegí la terminación:</p>
-        <div class="terminaciones">
-          <label><input type="radio" name="terminacion-hogar1"> 1</label>
-          <label><input type="radio" name="terminacion-hogar1"> 2</label>
-          <label><input type="radio" name="terminacion-hogar1"> 3</label>
-        </div>
+        <p><strong>9800</strong></p>
+        
         <p class="descripcion">Tela de algodón con diseño estampado en tonos naturales.</p>
-        <button>Descubrir</button>
+        <button>Agregar al carrito</button>
       </div>
       <div class="producto-card">
         <img src="../assets/img/hogar/hogar3.png" alt="Producto hogar">
         <h3>Vajilla</h3>
-        <p><strong>Precio</strong></p>
-        <p>Elegí la terminación:</p>
-        <div class="terminaciones">
-          <label><input type="radio" name="terminacion-hogar1"> 1</label>
-          <label><input type="radio" name="terminacion-hogar1"> 2</label>
-          <label><input type="radio" name="terminacion-hogar1"> 3</label>
-        </div>
+        <p><strong>7200</strong></p>
+        
         <p class="descripcion">Tela de algodón con diseño estampado en tonos naturales.</p>
-        <button>Descubrir</button>
+        <button>Agregar al carrito</button>
       </div>
       </div>
 
@@ -131,37 +124,22 @@
         <div class="producto-card">
           <img src="../assets/img/indumentaria/imageni1.jpg" alt="Producto indumentaria">
           <h3>Kimono</h3>
-          <p><strong>Precio</strong></p>
-          <div class="valoracion">
-            <label><input type="radio" name="ind1"> 1</label>
-            <label><input type="radio" name="ind1"> 2</label>
-            <label><input type="radio" name="ind1"> 3</label>
-          </div>
+          <p><strong>8900</strong></p>
           <p class="descripcion">Silueta de ajuste relajado tipo kimono. Prácticos bolsillos de parche en la parte delantera. 100% Lino Natural, prelavado.</p>
-          <button>Descubrir</button>
+          <button>Agregar al carrito</button>
         </div>
         <div class="producto-card">
           <img src="../assets/img/indumentaria/imageni2.jpg" alt="Producto indumentaria">
           <h3>Pantalón Holgado</h3>
-          <p><strong>Precio</strong></p>
-          <div class="valoracion">
-            <label><input type="radio" name="ind1"> 1</label>
-            <label><input type="radio" name="ind1"> 2</label>
-            <label><input type="radio" name="ind1"> 3</label>
-          </div>
+          <p><strong>9100</strong></p>
           <p class="descripcion">Tiro medio con cintura elástica. Bordado de caja cuadrada con trama cruzada. Bolsillos laterales. 100% Lino Natural, prelavado.</p>
-          <button>Descubrir</button>
+          <button>Agregar al carrito</button>
         </div><div class="producto-card">
           <img src="../assets/img/indumentaria/imageni3.jpg" alt="Producto indumentaria">
           <h3>Blusa</h3>
-          <p><strong>Precio</strong></p>
-          <div class="valoracion">
-            <label><input type="radio" name="ind1"> 1</label>
-            <label><input type="radio" name="ind1"> 2</label>
-            <label><input type="radio" name="ind1"> 3</label>
-          </div>
+          <p><strong>7800</strong></p>
           <p class="descripcion">Blusa de manga corta fruncida al bies. 100% Lino Natural, prelavado. </p>
-          <button>Descubrir</button>
+          <button>Agregar al carrito</button>
         </div>
       </div>
 
@@ -172,37 +150,23 @@
         <div class="producto-card">
           <img src="../assets/img/muebles/mesita_de_noche.jpg" alt="Producto muebles">
           <h3>Mesa de Noche</h3>
-          <p><strong>Precio</strong></p>
-          <div class="valoracion">
-            <label><input type="radio" name="mueb1"> 1</label>
-            <label><input type="radio" name="mueb1"> 2</label>
-            <label><input type="radio" name="mueb1"> 3</label>
-          </div>
+          <p><strong>12000</strong></p>
           <p class="descripcion">Mesita de noche restaurada. Sobre en madera reciclada de roble, pintura tiza gris cálido, acabado en barniz mate.</p>
-          <button>Descubrir</button>
+          <button>Agregar al carrito</button>
         </div>
          <div class="producto-card">
           <img src="../assets/img/muebles/imagen2.jpg" alt="Producto muebles">
           <h3>Mecedora</h3>
-          <p><strong>Precio</strong></p>
-          <div class="valoracion">
-            <label><input type="radio" name="mueb1"> 1</label>
-            <label><input type="radio" name="mueb1"> 2</label>
-            <label><input type="radio" name="mueb1"> 3</label>
-          </div>
+          <p><strong>15000</strong></p>
           <p class="descripcion">Un delicado diseño del arquitecto y diseñador danés Illum Wikkelsø. La silueta biomórfica de este mueble es característica de su obra. Fabricado en madera de roble. Muy buen estado.</p>
-          <button>Descubrir</button>
-        </div><div class="producto-card">
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto-card">
           <img src="../assets/img/muebles/muebles3.jpg" alt="Producto muebles">
           <h3>Banco</h3>
-          <p><strong>Precio</strong></p>
-          <div class="valoracion">
-            <label><input type="radio" name="mueb1"> 1</label>
-            <label><input type="radio" name="mueb1"> 2</label>
-            <label><input type="radio" name="mueb1"> 3</label>
-          </div>
+          <p><strong>11000</strong></p>
           <p class="descripcion">Banco con respaldo. Un diseño moderno de mediados de siglo. Tiene un precioso asiento tapizado, y una estructura de madera maciza.</p>
-          <button>Descubrir</button>
+          <button>Agregar al carrito</button>
         </div>
       </div>
 
@@ -213,43 +177,44 @@
         <div class="producto-card">
           <img src="../assets/img/accesorios/accesorios4.png" alt="Producto accesorios">
           <h3>Neceser</h3>
-          <p><strong>Precio</strong></p>
-          <div class="valoracion">
-            <label><input type="radio" name="acc1"> 1</label>
-            <label><input type="radio" name="acc1"> 2</label>
-            <label><input type="radio" name="acc1"> 3</label>
-          </div>
+          <p><strong>4800</strong></p>
+          
           <p class="descripcion">Lleva todo lo esencial y más en este neceser hecho de saco de grano, con un exclusivo detalle de boro y parches, diseñada y cosida a mano por Yoli. Una mezcla de fibras recicladas y vintage que aprovecha el estilo rústico de la tela vintage.</p>
-          <button>Descubrir</button>
+          <button>Agregar al carrito</button>
         </div>
          <div class="producto-card">
           <img src="../assets/img/accesorios/accesorios5.png" alt="Producto accesorios">
           <h3>Bolso de Mano</h3>
-          <p><strong>Precio</strong></p>
-          <div class="valoracion">
-            <label><input type="radio" name="acc1"> 1</label>
-            <label><input type="radio" name="acc1"> 2</label>
-            <label><input type="radio" name="acc1"> 3</label>
-          </div>
+          <p><strong>5600</strong></p>
+          
           <p class="descripcion">Bolso de mercado con parche elaborado a mano con fibras naturales y trabajado a mano con el arte japonés de costura sashiko en un diseño orgánico.Un ejemplo de textil en su estado puro. Las asas de cuero adquirirán un tono caramelizado y el saco de grano mejorará con el tiempo.</p>
-          <button>Descubrir</button>
+          <button>Agregar al carrito</button>
         </div><div class="producto-card">
           <img src="../assets/img/accesorios/accesorios1.png" alt="Producto accesorios">
           <h3>Estuche Portátil</h3>
-          <p><strong>Precio</strong></p>
-          <div class="valoracion">
-            <label><input type="radio" name="acc1"> 1</label>
-            <label><input type="radio" name="acc1"> 2</label>
-            <label><input type="radio" name="acc1"> 3</label>
-          </div>
+          <p><strong>6400</strong></p>
+          
           <p class="descripcion">El estuche para computadora portátil viene forrado con una lona resistente de color avena, un bolsillo interior con borde ribeteado y una cremallera gruesa de metal bronceado con un tirador de cáñamo natural.</p>
-          <button>Descubrir</button>
+          <button>Agregar al carrito</button>
         </div>
       </div>
 
     </section>
+    
   </main>
-  <!-- Pie de página -->
+  <aside id="panel-carrito" class="panel-carrito shadow">
+    <div class="panel-header d-flex justify-content-between align-items-center">
+      <h5 class="m-0">🛒 Tu carrito</h5>
+      <button id="cerrar-carrito" class="btn-close"></button>
+    </div>
+    <div id="lista-carrito" class="p-3"></div>
+    <div id="total-carrito" class="p-3 fw-bold"></div>
+    <div class="p-3">
+      <button id="finalizar-compra" class="btn btn-dark w-100">Finalizar compra</button>
+      <div id="mensaje-final" class="mt-3 text-success fw-semibold"></div>
+    </div>
+  </aside>
+  
   <!-- Pie de página -->
 <footer class="text-center py-4">
   <p>&copy; 2025 Casa Bonicha - Todos los derechos reservados</p>
@@ -265,5 +230,6 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/carrito.js"></script>
 </body>
 </html>
