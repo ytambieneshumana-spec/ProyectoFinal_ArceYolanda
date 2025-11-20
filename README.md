@@ -10,4 +10,4 @@ Tecnologías utilizadas
 
 Visualización
 El sitio está disponible en GitHub Pages: 
-https://ytambieneshumana-spec.github.io/bonichajs-simulador/index.html 
+https://ytambieneshumana-spec.github.io/ProyectoFinal_ArceYolanda/  
