@@ -1,91 +1,182 @@
-// --- Variables y arrays ---
-const iva = 0.21; // IVA
-let productos = [
-  "Almohadones", "Mantas Playa", "Vajilla",         // Hogar
-  "Kimono", "Pantalón Holgado", "Blusa",            // Indumentaria
-  "Mesa de Noche", "Mecedora", "Banco",             // Muebles
-  "Neceser", "Bolso de Mano", "Estuche Portátil"    // Accesorios
-];
+// =========================
+//   CARGA DE PRODUCTOS
+// =========================
 
-let precios = [
-  5000, 12000, 8000, // Hogar
-  30000, 25000, 18000, // Indumentaria
-  35000, 60000, 28000, // Muebles
-  8000, 15000, 12000 // Accesorios
-];
-
-let stock = [
-  10, 8, 15, // Hogar
-  5, 7, 9, // Indumentaria
-  3, 2, 4, // Muebles
-  12, 6, 10 // Accesorios
-];
-
-// --- Función 1: mostrar lista de productos ---
-function mostrarProductos() {
-  console.log("Productos disponibles en Casa Bonicha:");
-  for (let i = 0; i < productos.length; i++) {
-    console.log(`${i + 1}. ${productos[i]} - $${precios[i]} (Stock: ${stock[i]})`);
-  }
-}
-
-// --- Función 2: seleccionar producto ---
-function seleccionarProducto() {
-  let lista = "";
-  for (let i = 0; i < productos.length; i++) {
-    lista += `${i + 1}. ${productos[i]} - $${precios[i]} (Stock: ${stock[i]})\n`;
-  }
-  let indice = prompt("Ingrese el número del producto que desea comprar:\n" + lista);
-  indice = parseInt(indice) - 1;
-  if (indice >= 0 && indice < productos.length) {
-    return indice;
-  } else {
-    alert("Opción inválida. Se seleccionará el primero por defecto.");
-    return 0;
-  }
-}
-
-// --- Función 3: calcular total con IVA ---
-function calcularTotal(indiceProducto, cantidad) {
-  let subtotal = precios[indiceProducto] * cantidad;
-  return subtotal * (1 + iva);
-}
-
-// --- Flujo del simulador ---
-alert("Bienvenida a Casa Bonicha - Simulador de compra");
-
-// acumulador para mostrar el total al final
-let totalGeneral = 0;
+let productos = [];
 let carrito = [];
 
-let continuar = true;
-while (continuar) {
-  mostrarProductos();
-  let indice = seleccionarProducto();
-  let cantidad = prompt(`¿Cuántas unidades de ${productos[indice]} desea comprar?`);
-  cantidad = parseInt(cantidad);
+const contenedorProductos = document.getElementById("productosContainer");
+const contenedorCarrito = document.getElementById("carritoContainer");
+const selectCategorias = document.getElementById("categoriaSelect");
+const resultadoTotal = document.getElementById("resultado");
 
-  if (cantidad > 0 && cantidad <= stock[indice]) {
-    let total = calcularTotal(indice, cantidad);
-    totalGeneral += total;
-    stock[indice] -= cantidad; // actualizar stock
-    carrito.push(`${cantidad} x ${productos[indice]} = $${total}`);
-    alert(`Has agregado ${cantidad} ${productos[indice]}.\nSubtotal con IVA: $${total}`);
-    console.log(`Stock restante de ${productos[indice]}: ${stock[indice]}`);
-  } else {
-    alert("Cantidad inválida o sin stock disponible.");
-  }
+// Cargar JSON externo
+async function cargarProductos() {
+    try {
+        const response = await fetch("js/productos.json");
+        if (!response.ok) throw new Error("No se pudo cargar productos.json");
 
-  // preguntar si quiere seguir comprando
-  continuar = confirm("¿Desea continuar comprando?");
+        const data = await response.json();
+        productos = data;
+
+        cargarCategorias();
+        renderProductos("todas");
+    } catch (error) {
+        Swal.fire("Error", "No se pudieron cargar los productos.", "error");
+        console.error(error);
+    }
 }
 
-// mostrar resumen final
-let resumen = "Resumen de tu compra:\n";
-for (let item of carrito) {
-  resumen += item + "\n";
-}
-resumen += `\nTOTAL GENERAL: $${totalGeneral}`;
-alert(resumen);
-console.log(resumen);
+// =========================
+//      CATEGORÍAS
+// =========================
 
+function cargarCategorias() {
+    const categorias = [...new Set(productos.map(p => p.categoria))];
+
+    selectCategorias.innerHTML = `
+        <option value="todas">Todas</option>
+        ${categorias.map(cat => `<option value="${cat}">${cat}</option>`).join("")}
+    `;
+
+    selectCategorias.addEventListener("change", () => {
+        renderProductos(selectCategorias.value);
+    });
+}
+
+// =========================
+//   RENDER DE PRODUCTOS
+// =========================
+
+function renderProductos(categoria) {
+    contenedorProductos.innerHTML = "";
+
+    let filtrados =
+        categoria === "todas"
+            ? productos
+            : productos.filter(p => p.categoria === categoria);
+
+    filtrados.forEach(prod => {
+        let card = document.createElement("div");
+        card.className = "prod-card";
+
+        card.innerHTML = `
+            <h4>${prod.nombre}</h4>
+            <p>Precio: $${prod.precio}</p>
+            <p>Stock: ${prod.stock}</p>
+
+            <input type="number" id="cant-${prod.id}" value="1" min="1" max="${prod.stock}" />
+            <button onclick="agregarAlCarrito(${prod.id})">Agregar</button>
+        `;
+
+        contenedorProductos.appendChild(card);
+    });
+}
+
+// =========================
+//     CARRITO
+// =========================
+
+function agregarAlCarrito(idProducto) {
+    const prod = productos.find(p => p.id === idProducto);
+    const cantidad = parseInt(document.getElementById(`cant-${idProducto}`).value);
+
+    if (cantidad > prod.stock) {
+        return Toastify({ text: "No hay stock suficiente", duration: 2500 }).showToast();
+    }
+
+    const item = carrito.find(p => p.id === idProducto);
+
+    if (item) {
+        item.cantidad += cantidad;
+    } else {
+        carrito.push({
+            id: prod.id,
+            nombre: prod.nombre,
+            precio: prod.precio,
+            cantidad
+        });
+    }
+
+    Toastify({ text: "Producto agregado", duration: 2500 }).showToast();
+
+    renderCarrito();
+}
+
+function renderCarrito() {
+    contenedorCarrito.innerHTML = "";
+
+    carrito.forEach(item => {
+        let row = document.createElement("div");
+        row.className = "carrito-row";
+
+        row.innerHTML = `
+            <span>${item.nombre}</span>
+            <span>$${item.precio * item.cantidad}</span>
+            <input type="number" value="${item.cantidad}" min="1" 
+                onchange="actualizarCantidad(${item.id}, this.value)" />
+            <button onclick="eliminarProducto(${item.id})">X</button>
+        `;
+
+        contenedorCarrito.appendChild(row);
+    });
+}
+
+function actualizarCantidad(id, nuevaCantidad) {
+    const item = carrito.find(p => p.id === id);
+    item.cantidad = parseInt(nuevaCantidad);
+
+    renderCarrito();
+}
+
+function eliminarProducto(id) {
+    carrito = carrito.filter(p => p.id !== id);
+
+    renderCarrito();
+}
+
+// =========================
+//   COTIZAR Y GUARDAR
+// =========================
+
+document.getElementById("btnCotizar").addEventListener("click", () => {
+    if (carrito.length === 0) {
+        return Swal.fire("Carrito vacío", "Agrega productos antes de cotizar", "warning");
+    }
+
+    const descuento = parseInt(document.getElementById("inputDescuento").value) || 0;
+
+    let subtotal = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+    let totalFinal = subtotal * (1 - descuento / 100);
+
+    resultadoTotal.innerHTML = `
+        Subtotal: $${subtotal}<br>
+        Descuento: ${descuento}%<br>
+        <strong>Total final: $${Math.round(totalFinal)}</strong>
+    `;
+});
+
+document.getElementById("btnGuardar").addEventListener("click", () => {
+
+    if (carrito.length === 0) {
+        return Swal.fire("Error", "No hay nada para guardar", "warning");
+    }
+
+    let guardado = {
+        fecha: new Date().toLocaleString(),
+        items: carrito,
+        total: resultadoTotal.textContent
+    };
+
+    localStorage.setItem("ultimaCotizacion", JSON.stringify(guardado));
+
+    Swal.fire("Guardado", "Cotización almacenada en el navegador", "success");
+});
+
+// =========================
+//    INICIALIZACIÓN
+// =========================
+
+document.addEventListener("DOMContentLoaded", () => {
+    cargarProductos();
+});

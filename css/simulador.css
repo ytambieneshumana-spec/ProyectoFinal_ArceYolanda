@@ -1,0 +1,13 @@
+
+/* simulador.css - estilos mínimos para el simulador */
+#simulador h2 { margin-top:0; }
+.prod-card {
+  border:1px solid #e5e5e5;
+  padding:10px;
+  border-radius:6px;
+  margin-bottom:8px;
+}
+.prod-nombre { font-weight:600; margin-bottom:6px; }
+.carrito-table { display:flex; flex-direction:column; gap:6px; }
+.carrito-row { display:flex; align-items:center; gap:8px; padding:6px; border-radius:6px; background:#fff; border:1px solid #f0f0f0; }
+button { cursor:pointer; }

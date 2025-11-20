@@ -1,0 +1,91 @@
+/* talleres.css - estilos mínimos para la página de talleres */
+.menu-btn {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.menu-btn i {
+    color: #000 !important;
+}
+
+header.encabezado {
+    background-color: #f8dada !important; /* mismo color rosado del resto del sitio */
+}
+.talleres-container {
+    padding: 40px;
+}
+
+
+.form-card,
+.agenda-card {
+    background-color: #dbeeee;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+
+.talleres-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-card,
+.agenda-card {
+  flex: 1 1 350px;
+  padding: 12px;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+}
+
+.form-row {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.form-row input,
+.form-row select {
+  padding: 8px;
+  border: 1px solid #dbeeee;
+  border-radius: 4px;
+}
+
+button.btn {
+  background:#dbeeee; 
+  padding: 8px 14px;
+  color:black;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button.btn:hover {
+  background-color:#dbeeee;
+}
+
+table.lista {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.lista th,
+table.lista td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.small-muted {
+  font-size: 13px;
+  color: #666;
+}
+
+.selected {
+  background: #14534a !important;
+}
