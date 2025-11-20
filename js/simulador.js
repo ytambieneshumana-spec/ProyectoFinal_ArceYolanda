@@ -70,7 +70,7 @@ function mostrarToast(mensaje, dur = 2500) {
 
 async function cargarProductos() {
   try {
-    const res = await fetch("js/productos.json");
+    const res = await fetch("./js/productos.json");
     if (!res.ok) throw new Error("No se pudo cargar productos.json");
     const data = await res.json();
     estado.productos = data.map(p => new Producto(p));
