@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nombre": "Costura Inicial",
+    "cupos": 12,
+    "horarios": ["10:00", "14:00", "17:00"]
+  },
+  {
+    "id": 2,
+    "nombre": "Reciclado Textil",
+    "cupos": 8,
+    "horarios": ["09:00", "15:00"]
+  },
+  {
+    "id": 3,
+    "nombre": "Restauración de Muebles",
+    "cupos": 10,
+    "horarios": ["11:00", "18:00"]
+  }
+]

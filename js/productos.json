@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "categoria": "indumentaria",
+    "nombre": "Remera Bonicha - Talle S",
+    "precio": 12000,
+    "stock": 10
+  },
+  {
+    "id": 2,
+    "categoria": "indumentaria",
+    "nombre": "Remera Bonicha - Talle M",
+    "precio": 12500,
+    "stock": 8
+  },
+  {
+    "id": 3,
+    "categoria": "deco",
+    "nombre": "Almohadón tejido 40x40",
+    "precio": 18000,
+    "stock": 5
+  },
+  {
+    "id": 4,
+    "categoria": "deco",
+    "nombre": "Maceta cerámica chica",
+    "precio": 9500,
+    "stock": 12
+  },
+  {
+    "id": 5,
+    "categoria": "textil",
+    "nombre": "Manta liviana 1 plaza",
+    "precio": 22000,
+    "stock": 4
+  },
+  {
+    "id": 6,
+    "categoria": "textil",
+    "nombre": "Vincha artesanal",
+    "precio": 5500,
+    "stock": 20
+  }
+]
