@@ -20,7 +20,7 @@ function mostrarToast(m) {
 
 async function cargarTalleres() {
   try {
-    const res = await fetch("./js/talleres.json");
+    const res = await fetch("../js/talleres.json");
     if (!res.ok) throw new Error("No se pudo cargar talleres.json");
 
     STATE.talleres = await res.json();
